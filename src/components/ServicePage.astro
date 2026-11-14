@@ -1,0 +1,84 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from './Icon.astro';
+import PageHero from './PageHero.astro';
+import FeatureCards from './FeatureCards.astro';
+import ServicesGrid from './ServicesGrid.astro';
+import Process from './Process.astro';
+import Testimonials from './Testimonials.astro';
+import Faq from './Faq.astro';
+import Cta from './Cta.astro';
+import { site, telLink, whatsappLink } from '../config/site';
+import { services } from '../data/services';
+import { locations } from '../data/locations';
+import { faqPage, service as serviceSchema, type Crumb } from '../lib/schema';
+
+interface Props {
+  id: string;
+}
+const s = services[Astro.props.id];
+const crumbs: Crumb[] = [['Inicio', '/'], [s.card_title, s.path]];
+const allServices = Object.values(services);
+---
+<Base
+  title={s.title}
+  description={s.description}
+  crumbs={crumbs}
+  schema={[serviceSchema(s.card_title, s.description, s.path, ['Gijón', 'Villaviciosa', 'Asturias']), faqPage(s.faqs)]}
+>
+  <PageHero icon={s.icon} title={s.h1} lead={s.lead} crumbs={crumbs}>
+    <a class="btn btn-primary btn-lg" href={telLink}><Icon name="phone" class="icon icon-sm" /> {site.phoneDisplay}</a>
+    <a class="btn btn-ghost btn-lg" href="/contacto">Pedir presupuesto</a>
+  </PageHero>
+
+  <section class="section">
+    <div class="container container-narrow prose">
+      {s.intro.map((p) => <p>{p}</p>)}
+    </div>
+  </section>
+
+  <section class="section section-alt" aria-labelledby="feat-title">
+    <div class="container">
+      <h2 id="feat-title" class="section-title">Qué incluye</h2>
+      <FeatureCards items={s.features} />
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="price-title">
+    <div class="container container-narrow">
+      <p class="eyebrow">Tarifas</p>
+      <h2 id="price-title" class="section-title">Precios claros</h2>
+      <div class="price-table">
+        {s.prices.map((p) => (
+          <div class="price-row">
+            <div><strong>{p.name}</strong><small>{p.note}</small></div>
+            <span class="price">{p.price}</span>
+          </div>
+        ))}
+      </div>
+      <p class="form-note">Precios finales. Te damos presupuesto cerrado antes de empezar.</p>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <h2 class="section-title">Dónde ofrecemos este servicio</h2>
+      <div class="chips">
+        {Object.values(locations).map((l) => (
+          <a class="chip" href={l.path}><Icon name="map-pin" class="icon icon-sm" /> {s.nav} en {l.name}</a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Faq faqs={s.faqs} heading={`Preguntas sobre ${s.card_title.toLowerCase()}`} />
+
+  <section class="section section-alt">
+    <div class="container">
+      <h2 class="section-title">Otros servicios</h2>
+      <ServicesGrid services={allServices.filter((x) => x !== s)} />
+    </div>
+  </section>
+
+  <Cta />
+</Base>

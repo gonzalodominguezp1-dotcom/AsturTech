@@ -1,0 +1,25 @@
+---
+import Icon from './Icon.astro';
+import { site, telLink, whatsappLink } from '../config/site';
+
+interface Props {
+  heading?: string;
+  text?: string;
+}
+const {
+  heading = '¿Hablamos? Escríbenos cuando quieras',
+  text = 'Cuéntanos qué te pasa y te damos una solución y un precio claro, sin compromiso.',
+} = Astro.props;
+---
+<section class="cta-band">
+  <div class="container cta-inner">
+    <div>
+      <h2>{heading}</h2>
+      <p>{text}</p>
+    </div>
+    <div class="cta-actions">
+      <a class="btn btn-light btn-lg" href={telLink}><Icon name="phone" class="icon icon-sm" /> {site.phoneDisplay}</a>
+      <a class="btn btn-wa btn-lg" href={whatsappLink()} target="_blank" rel="noopener"><Icon name="whatsapp" class="icon icon-sm" /> WhatsApp</a>
+    </div>
+  </div>
+</section>

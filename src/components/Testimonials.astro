@@ -1,0 +1,33 @@
+---
+// Solo se muestran reseñas reales publicadas en Supabase (tabla testimonials).
+// Si no hay ninguna, la sección no aparece.
+import Icon from './Icon.astro';
+import { site } from '../config/site';
+import { getTestimonials } from '../lib/supabase';
+
+const reviews = await getTestimonials();
+---
+{reviews.length > 0 && (
+  <section class="section section-alt" aria-labelledby="reviews-title">
+    <div class="container">
+      <p class="eyebrow">Opiniones</p>
+      <h2 id="reviews-title" class="section-title">Lo que dicen nuestros clientes</h2>
+      <div class="grid grid-3">
+        {reviews.map((r) => (
+          <figure class="card review">
+            <div class="stars" aria-label={`${r.rating} de 5 estrellas`}>
+              {Array.from({ length: r.rating }, () => <Icon name="star" class="icon icon-sm" />)}
+            </div>
+            <blockquote><p>{r.body}</p></blockquote>
+            <figcaption><strong>{r.author}</strong>{r.location && ` · ${r.location}`}</figcaption>
+          </figure>
+        ))}
+      </div>
+      {site.googleReviewsUrl && (
+        <p class="center mt-2">
+          <a class="link-arrow" href={site.googleReviewsUrl} target="_blank" rel="noopener">Ver todas las reseñas en Google <Icon name="arrow" class="icon icon-sm" /></a>
+        </p>
+      )}
+    </div>
+  </section>
+)}

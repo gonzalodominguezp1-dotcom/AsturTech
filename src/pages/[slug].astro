@@ -1,0 +1,25 @@
+---
+/**
+ * Páginas de servicio (/servicio-tecnico-informatico…) y de zona (/informatico-gijon…).
+ * Se generan en el build a partir de src/data.
+ */
+import type { GetStaticPaths } from 'astro';
+import ServicePage from '../components/ServicePage.astro';
+import LocationPage from '../components/LocationPage.astro';
+import { services } from '../data/services';
+import { locations } from '../data/locations';
+
+export const getStaticPaths = (() => [
+  ...Object.entries(services).map(([key, s]) => ({
+    params: { slug: s.path.slice(1) },
+    props: { kind: 'service' as const, key },
+  })),
+  ...Object.entries(locations).map(([key, l]) => ({
+    params: { slug: l.path.slice(1) },
+    props: { kind: 'location' as const, key },
+  })),
+]) satisfies GetStaticPaths;
+
+const { kind, key } = Astro.props;
+---
+{kind === 'service' ? <ServicePage id={key} /> : <LocationPage id={key} />}

@@ -1,0 +1,18 @@
+---
+import LegalPage from '../components/LegalPage.astro';
+import { site, fullAddress } from '../config/site';
+---
+<LegalPage title="Política de privacidad" path="/privacidad">
+  <h2>Responsable del tratamiento</h2>
+  <p>{site.legalName ? `${site.legalName} (${site.name})` : site.name}{site.taxId && `, NIF ${site.taxId}`}, {fullAddress}. Email: {site.email}. Teléfono: {site.phoneDisplay}.</p>
+  <h2>Qué datos tratamos y para qué</h2>
+  <p>Cuando nos escribes mediante el formulario de contacto tratamos tu nombre, teléfono, email, localidad y el mensaje que nos envías, con la única finalidad de responder a tu consulta y, si lo solicitas, enviarte un presupuesto.</p>
+  <h2>Base legal</h2>
+  <p>Tu consentimiento, que otorgas al marcar la casilla del formulario (art. 6.1.a RGPD), y la aplicación de medidas precontractuales a petición tuya (art. 6.1.b RGPD).</p>
+  <h2>Conservación</h2>
+  <p>Conservamos los datos mientras sea necesario para atender tu solicitud y, como máximo, [12 meses] si no llega a haber relación comercial. Si te convertimos en cliente, durante los plazos legales aplicables.</p>
+  <h2>Destinatarios</h2>
+  <p>No cedemos tus datos a terceros salvo obligación legal. Los mensajes se almacenan en Supabase (Supabase Inc.), proveedor de base de datos que actúa como encargado del tratamiento, con servidores ubicados en la Unión Europea [confirmar región del proyecto].</p>
+  <h2>Tus derechos</h2>
+  <p>Puedes ejercer tus derechos de acceso, rectificación, supresión, oposición, limitación y portabilidad escribiendo a {site.email}. Si consideras que no hemos atendido correctamente tu solicitud, puedes reclamar ante la Agencia Española de Protección de Datos (www.aepd.es).</p>
+</LegalPage>

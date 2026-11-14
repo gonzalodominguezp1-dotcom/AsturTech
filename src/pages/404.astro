@@ -1,0 +1,16 @@
+---
+import Base from '../layouts/Base.astro';
+import ServicesGrid from '../components/ServicesGrid.astro';
+import { services } from '../data/services';
+---
+<Base title="Página no encontrada | AsturTech" description="La página que buscas no existe." noindex>
+  <section class="page-hero page-hero-sm">
+    <div class="container">
+      <h1>Esta página no existe</h1>
+      <p class="hero-lead">Puede que el enlace haya cambiado. Estos son nuestros servicios, o vuelve al <a href="/">inicio</a>.</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container"><ServicesGrid services={Object.values(services)} /></div>
+  </section>
+</Base>

@@ -1,0 +1,56 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import ContactForm from '../components/ContactForm.astro';
+import { site, fullAddress, telLink, whatsappLink } from '../config/site';
+import type { Crumb } from '../lib/schema';
+
+const crumbs: Crumb[] = [['Inicio', '/'], ['Contacto', '/contacto']];
+const mapUrl = `https://www.openstreetmap.org/?mlat=${site.lat}&mlon=${site.lng}#map=16/${site.lat}/${site.lng}`;
+---
+<Base
+  title="Contacto | AsturTech · Informático en Villaviciosa y Gijón"
+  description="Contacta con AsturTech, informáticos en Villaviciosa y Gijón. Llámanos, escríbenos por WhatsApp o pide presupuesto sin compromiso con el formulario."
+  crumbs={crumbs}
+>
+  <section class="page-hero page-hero-sm">
+    <div class="container">
+      <Breadcrumbs crumbs={crumbs} />
+      <h1>Contacta con tu informático en Asturias</h1>
+      <p class="hero-lead">Llámanos, escríbenos por WhatsApp o déjanos un mensaje. Te contestamos lo antes posible y te damos cita.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container contact-grid">
+      <div class="card" id="formulario">
+        <h2 class="h3">Pide presupuesto sin compromiso</h2>
+        <ContactForm />
+      </div>
+
+      <aside class="contact-info">
+        <a class="contact-item" href={telLink}>
+          <span class="card-icon"><Icon name="phone" /></span>
+          <span><small>Teléfono</small><strong>{site.phoneDisplay}</strong></span>
+        </a>
+        <a class="contact-item" href={whatsappLink()} target="_blank" rel="noopener">
+          <span class="card-icon wa"><Icon name="whatsapp" /></span>
+          <span><small>WhatsApp</small><strong>Escríbenos</strong></span>
+        </a>
+        <a class="contact-item" href={`mailto:${site.email}`}>
+          <span class="card-icon"><Icon name="mail" /></span>
+          <span><small>Email</small><strong>{site.email}</strong></span>
+        </a>
+        <a class="contact-item" href={mapUrl} target="_blank" rel="noopener">
+          <span class="card-icon"><Icon name="map-pin" /></span>
+          <span><small>Zona</small><strong>{fullAddress}</strong></span>
+        </a>
+        <div class="contact-item">
+          <span class="card-icon"><Icon name="clock" /></span>
+          <span><small>Horario</small><strong>{site.hoursDisplay}</strong></span>
+        </div>
+      </aside>
+    </div>
+  </section>
+</Base>

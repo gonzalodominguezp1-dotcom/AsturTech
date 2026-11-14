@@ -1,0 +1,176 @@
+---
+import '../styles/global.css';
+import Icon from '../components/Icon.astro';
+import { site, telLink, whatsappLink } from '../config/site';
+import { services } from '../data/services';
+import { locations } from '../data/locations';
+import { localBusiness, breadcrumbs, type Crumb } from '../lib/schema';
+
+interface Props {
+  title: string;
+  description: string;
+  crumbs?: Crumb[];
+  schema?: object[];
+  noindex?: boolean;
+}
+const { title, description, crumbs, schema = [], noindex = false } = Astro.props;
+
+const path = Astro.url.pathname.replace(/(\.html|\/)$/, '').replace(/\/index$/, '') || '/';
+const canonical = new URL(path, site.url).href;
+const ogImage = new URL('/img/og-image.png', site.url).href;
+const jsonLd = [localBusiness(), ...schema, ...(crumbs ? [breadcrumbs(crumbs)] : [])];
+const current = (href: string) => (href === path ? 'page' : undefined);
+---
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <meta name="robots" content={noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large'} />
+  <link rel="canonical" href={canonical} />
+  <meta name="geo.region" content="ES-AS" />
+  <meta name="geo.placename" content={site.city} />
+  <meta name="geo.position" content={`${site.lat};${site.lng}`} />
+  <meta name="ICBM" content={`${site.lat}, ${site.lng}`} />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="es_ES" />
+  <meta property="og:site_name" content={site.name} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:image" content={ogImage} />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <meta name="theme-color" content="#0b1a33" />
+  <link rel="icon" href="/img/favicon.svg" type="image/svg+xml" />
+  <link rel="sitemap" href="/sitemap-index.xml" />
+  {jsonLd.map((block) => <script type="application/ld+json" set:html={JSON.stringify(block)} />)}
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <header class="site-header" data-header>
+    <div class="container header-inner">
+      <a class="brand" href="/" aria-label={`${site.name}, inicio`}>
+        <img src="/img/logo.svg" alt="" width="36" height="36" />
+        <span>{site.name}</span>
+      </a>
+
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu" data-nav-toggle>
+        <span class="sr-only">Abrir menú</span><Icon name="menu" />
+      </button>
+
+      <nav class="main-nav" id="menu" aria-label="Principal" data-nav>
+        <ul>
+          {Object.values(services).map((s) => (
+            <li><a href={s.path} aria-current={current(s.path)}>{s.nav}</a></li>
+          ))}
+          <li class="has-sub">
+            <button type="button" aria-expanded="false" data-sub-toggle>Zonas <Icon name="chevron" class="icon icon-sm" /></button>
+            <ul class="sub">
+              {Object.values(locations).map((l) => (
+                <li><a href={l.path} aria-current={current(l.path)}>{l.name === 'Asturias' ? 'Toda Asturias' : l.name}</a></li>
+              ))}
+            </ul>
+          </li>
+          <li><a href="/contacto" aria-current={current('/contacto')}>Contacto</a></li>
+        </ul>
+        <a class="btn btn-primary btn-sm nav-cta" href={telLink}><Icon name="phone" class="icon icon-sm" /> {site.phoneDisplay}</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <slot />
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <a class="brand brand-light" href="/">
+          <img src="/img/logo.svg" alt="" width="32" height="32" /><span>{site.name}</span>
+        </a>
+        <p class="footer-about">Informáticos en Asturias. Servicio técnico, mantenimiento para empresas y desarrollo web para negocios en Gijón, Villaviciosa y toda la región.</p>
+      </div>
+      <div>
+        <h2 class="footer-title">Servicios</h2>
+        <ul class="footer-links">
+          {Object.values(services).map((s) => <li><a href={s.path}>{s.card_title}</a></li>)}
+        </ul>
+      </div>
+      <div>
+        <h2 class="footer-title">Zonas</h2>
+        <ul class="footer-links">
+          {Object.values(locations).map((l) => <li><a href={l.path}>{l.h1}</a></li>)}
+        </ul>
+      </div>
+      <div>
+        <h2 class="footer-title">Contacto</h2>
+        {/* NAP: debe coincidir exactamente con el Perfil de Empresa de Google */}
+        <address class="nap">
+          <strong>{site.name}</strong><br />
+          {site.street && <>{site.street}<br /></>}
+          {site.postalCode} {site.city}, {site.region}<br />
+          <a href={telLink}>{site.phoneDisplay}</a><br />
+          <a href={`mailto:${site.email}`}>{site.email}</a>
+        </address>
+        <p class="footer-hours">{site.hoursDisplay}</p>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <p>© {new Date().getFullYear()} {site.name}. Informático en Gijón y Villaviciosa, Asturias.</p>
+      <ul>
+        <li><a href="/aviso-legal">Aviso legal</a></li>
+        <li><a href="/privacidad">Privacidad</a></li>
+        <li><a href="/cookies">Cookies</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <a class="wa-float" href={whatsappLink()} target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
+    <Icon name="whatsapp" />
+  </a>
+
+  <div class="mobile-bar">
+    <a href={telLink} class="btn btn-primary"><Icon name="phone" class="icon icon-sm" /> Llamar</a>
+    <a href={whatsappLink()} class="btn btn-wa" target="_blank" rel="noopener"><Icon name="whatsapp" class="icon icon-sm" /> WhatsApp</a>
+  </div>
+
+  <script>
+    const header = document.querySelector<HTMLElement>('[data-header]');
+    const toggle = document.querySelector<HTMLButtonElement>('[data-nav-toggle]');
+    const nav = document.querySelector<HTMLElement>('[data-nav]');
+
+    toggle?.addEventListener('click', () => {
+      const open = toggle.getAttribute('aria-expanded') !== 'true';
+      toggle.setAttribute('aria-expanded', String(open));
+      nav?.classList.toggle('is-open', open);
+      document.body.classList.toggle('nav-open', open);
+    });
+
+    document.querySelectorAll<HTMLButtonElement>('[data-sub-toggle]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const open = btn.getAttribute('aria-expanded') !== 'true';
+        btn.setAttribute('aria-expanded', String(open));
+        btn.parentElement?.classList.toggle('is-open', open);
+      });
+    });
+
+    document.addEventListener('click', (ev) => {
+      document.querySelectorAll('.has-sub.is-open').forEach((li) => {
+        if (!li.contains(ev.target as Node)) {
+          li.classList.remove('is-open');
+          li.querySelector('button')?.setAttribute('aria-expanded', 'false');
+        }
+      });
+    });
+
+    const onScroll = () => header?.classList.toggle('is-scrolled', window.scrollY > 8);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  </script>
+</body>
+</html>

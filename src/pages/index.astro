@@ -1,0 +1,97 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import ServicesGrid from '../components/ServicesGrid.astro';
+import Process from '../components/Process.astro';
+import Areas from '../components/Areas.astro';
+import Testimonials from '../components/Testimonials.astro';
+import Faq from '../components/Faq.astro';
+import Cta from '../components/Cta.astro';
+import { site, telLink } from '../config/site';
+import { services } from '../data/services';
+import { faqPage, website } from '../lib/schema';
+
+const faqs = [
+  { q: '¿Qué hace un informático a domicilio?', a: 'Reparamos y ponemos a punto ordenadores y portátiles, eliminamos virus, configuramos wifi, impresoras y correo, recuperamos datos y ayudamos con cualquier problema informático sin que tengas que sacar el equipo de casa o de la oficina.' },
+  { q: '¿En qué zonas trabajáis?', a: 'Presencialmente en Villaviciosa, Gijón y concejos cercanos (Colunga, Cabranes, Sariego, Nava, Siero). En remoto, en toda Asturias.' },
+  { q: '¿Me dais presupuesto antes de empezar?', a: 'Siempre. Te explicamos qué ocurre y cuánto cuesta, y no empezamos ningún trabajo sin tu aprobación.' },
+  { q: '¿También hacéis páginas web?', a: 'Sí. Diseñamos webs y tiendas online para negocios de Asturias, con SEO local para que te encuentren en Google y en Google Maps.' },
+];
+---
+<Base
+  title="Informático en Villaviciosa y Gijón | AsturTech · Servicio técnico y desarrollo web"
+  description="Informático a domicilio en Villaviciosa, Gijón y toda Asturias. Reparación de ordenadores, wifi, mantenimiento para empresas y desarrollo web para negocios. Precios claros y sin compromiso."
+  schema={[faqPage(faqs), website()]}
+>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <p class="pill"><Icon name="map-pin" class="icon icon-sm" /> Villaviciosa · Gijón · Asturias</p>
+        <h1>Informático en Villaviciosa y Gijón</h1>
+        <p class="hero-lead">Servicio técnico informático, mantenimiento para empresas y desarrollo web para negocios en Asturias. Te lo solucionamos a domicilio o en remoto, con un precio claro antes de empezar.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary btn-lg" href={telLink}><Icon name="phone" class="icon icon-sm" /> Llamar ahora</a>
+          <a class="btn btn-ghost btn-lg" href="/contacto">Pedir presupuesto <Icon name="arrow" class="icon icon-sm" /></a>
+        </div>
+        <ul class="hero-trust">
+          <li><Icon name="check" class="icon icon-sm" /> Presupuesto antes de empezar</li>
+          <li><Icon name="check" class="icon icon-sm" /> A domicilio y en remoto</li>
+          <li><Icon name="check" class="icon icon-sm" /> Sin tecnicismos</li>
+        </ul>
+      </div>
+
+      <div class="hero-visual" aria-hidden="true">
+        <div class="panel">
+          <div class="panel-head"><span></span><span></span><span></span><em>Revisión del equipo</em></div>
+          <ul class="panel-list">
+            <li><span class="dot"></span>Virus y malware <b>Limpio</b></li>
+            <li><span class="dot"></span>Disco SSD <b>Instalado</b></li>
+            <li><span class="dot"></span>Copia de seguridad <b>Hoy 09:12</b></li>
+            <li><span class="dot"></span>Wifi <b>Excelente</b></li>
+          </ul>
+          <div class="panel-meter"><span></span></div>
+          <p class="panel-foot">Arranque: 48 s → <strong>9 s</strong></p>
+        </div>
+        <div class="float-card fc-1"><Icon name="shield" /><span><strong>Datos protegidos</strong><small>Copias automáticas</small></span></div>
+        <div class="float-card fc-2"><Icon name="clock" /><span><strong>Precio cerrado</strong><small>Antes de empezar</small></span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="services-title">
+    <div class="container">
+      <p class="eyebrow">Servicios</p>
+      <h2 id="services-title" class="section-title">Todo lo que necesitas de un informático, en un solo sitio</h2>
+      <p class="section-lead">Para particulares, autónomos y empresas de Asturias. Si tiene enchufe o conexión a Internet, probablemente podamos ayudarte.</p>
+      <ServicesGrid services={Object.values(services)} />
+    </div>
+  </section>
+
+  <section class="section section-dark" aria-labelledby="why-title">
+    <div class="container">
+      <p class="eyebrow">Por qué AsturTech</p>
+      <h2 id="why-title" class="section-title">Un informático de confianza, de aquí</h2>
+      <div class="grid grid-4 why">
+        <div><Icon name="handshake" /><h3>Trato cercano</h3><p>Te hablamos claro y te explicamos qué pasa con tu equipo, sin letra pequeña.</p></div>
+        <div><Icon name="euro" /><h3>Precios transparentes</h3><p>Tarifas publicadas y presupuesto cerrado antes de empezar cualquier trabajo.</p></div>
+        <div><Icon name="clock" /><h3>Siempre localizable</h3><p>Escríbenos o llámanos a cualquier hora y te damos cita en Villaviciosa, Gijón o en remoto.</p></div>
+        <div><Icon name="shield" /><h3>Tus datos, seguros</h3><p>Copia de seguridad antes de tocar nada y confidencialidad absoluta.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <Process />
+  <Areas />
+  <Testimonials />
+
+  <section class="section" aria-labelledby="about-title">
+    <div class="container container-narrow prose">
+      <h2 id="about-title">Servicio técnico informático en Gijón, Villaviciosa y Asturias</h2>
+      <p>En {site.name} somos informáticos asturianos. Reparamos ordenadores y portátiles, resolvemos problemas de wifi, virus o lentitud y damos soporte a pequeñas empresas para que su informática funcione sin sobresaltos. Atendemos a domicilio en Villaviciosa y Gijón, y en remoto en toda Asturias.</p>
+      <p>Además somos desarrolladores web para negocios: creamos páginas web y tiendas online rápidas, modernas y preparadas para el SEO local, para que cuando alguien busque tu servicio en tu zona te encuentre a ti. Si tienes un comercio, un restaurante, una casa rural o un despacho en Asturias, <a href="/desarrollo-web-negocios">te ayudamos a conseguir más clientes desde Google</a>.</p>
+    </div>
+  </section>
+
+  <Faq faqs={faqs} />
+  <Cta />
+</Base>

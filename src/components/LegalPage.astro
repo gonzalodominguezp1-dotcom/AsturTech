@@ -1,0 +1,26 @@
+---
+import Base from '../layouts/Base.astro';
+import Breadcrumbs from './Breadcrumbs.astro';
+import type { Crumb } from '../lib/schema';
+
+interface Props {
+  title: string;
+  path: string;
+}
+const { title, path } = Astro.props;
+const crumbs: Crumb[] = [['Inicio', '/'], [title, path]];
+---
+<Base title={`${title} | AsturTech`} description={`${title} de AsturTech.`} crumbs={crumbs}>
+  <section class="page-hero page-hero-sm">
+    <div class="container">
+      <Breadcrumbs crumbs={crumbs} />
+      <h1>{title}</h1>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container container-narrow prose">
+      <p class="notice">Texto orientativo pendiente de revisión. Conviene que lo valide un profesional antes de publicar la web.</p>
+      <slot />
+    </div>
+  </section>
+</Base>

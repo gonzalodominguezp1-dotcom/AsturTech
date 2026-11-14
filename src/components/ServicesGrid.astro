@@ -1,0 +1,19 @@
+---
+import Icon from './Icon.astro';
+import type { Service } from '../data/services';
+
+interface Props {
+  services: Service[];
+}
+const { services } = Astro.props;
+---
+<div class="grid grid-3">
+  {services.map((s) => (
+    <a class="card card-link" href={s.path}>
+      <span class="card-icon"><Icon name={s.icon} /></span>
+      <h3>{s.card_title}</h3>
+      <p>{s.card_text}</p>
+      <span class="card-more">Ver servicio <Icon name="arrow" class="icon icon-sm" /></span>
+    </a>
+  ))}
+</div>

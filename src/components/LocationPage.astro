@@ -1,0 +1,77 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from './Icon.astro';
+import PageHero from './PageHero.astro';
+import FeatureCards from './FeatureCards.astro';
+import ServicesGrid from './ServicesGrid.astro';
+import Process from './Process.astro';
+import Testimonials from './Testimonials.astro';
+import Faq from './Faq.astro';
+import Cta from './Cta.astro';
+import { site, telLink, whatsappLink } from '../config/site';
+import { services } from '../data/services';
+import { locations } from '../data/locations';
+import { faqPage, service as serviceSchema, type Crumb } from '../lib/schema';
+
+interface Props {
+  id: string;
+}
+const l = locations[Astro.props.id];
+const crumbs: Crumb[] = [['Inicio', '/'], [l.h1, l.path]];
+const allServices = Object.values(services);
+---
+<Base
+  title={l.title}
+  description={l.description}
+  crumbs={crumbs}
+  schema={[serviceSchema(l.h1, l.description, l.path, [l.name]), faqPage(l.faqs)]}
+>
+  <PageHero icon="map-pin" title={l.h1} lead={l.lead} crumbs={crumbs}>
+    <a class="btn btn-primary btn-lg" href={telLink}><Icon name="phone" class="icon icon-sm" /> {site.phoneDisplay}</a>
+    <a class="btn btn-wa btn-lg" href={whatsappLink(`Hola AsturTech, necesito un informático en ${l.name}`)} target="_blank" rel="noopener"><Icon name="whatsapp" class="icon icon-sm" /> WhatsApp</a>
+  </PageHero>
+
+  <section class="section">
+    <div class="container split">
+      <div class="prose">
+        {l.intro.map((p) => <p>{p}</p>)}
+      </div>
+      <aside class="card zones">
+        <h2 class="h3">Zonas que cubrimos</h2>
+        <ul class="zone-list">
+          {l.zones.map((z) => <li><Icon name="check" class="icon icon-sm" /> {z}</li>)}
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <FeatureCards items={l.highlights} />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Servicios informáticos en {l.name}</h2>
+      <ServicesGrid services={allServices} />
+    </div>
+  </section>
+
+  <Process />
+  <Testimonials />
+  <Faq faqs={l.faqs} heading={`Preguntas frecuentes en ${l.name}`} />
+
+  <section class="section section-alt">
+    <div class="container">
+      <h2 class="section-title">También trabajamos en</h2>
+      <div class="chips">
+        {l.nearby.map((k) => (
+          <a class="chip" href={locations[k].path}><Icon name="map-pin" class="icon icon-sm" /> {locations[k].h1}</a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Cta heading={`¿Necesitas un informático en ${l.name}?`} />
+</Base>

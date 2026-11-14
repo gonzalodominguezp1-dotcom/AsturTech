@@ -1,0 +1,24 @@
+---
+import Icon from './Icon.astro';
+import type { Faq } from '../data/services';
+
+interface Props {
+  faqs: Faq[];
+  heading?: string;
+}
+const { faqs, heading = 'Lo que más nos preguntan' } = Astro.props;
+---
+<section class="section" aria-labelledby="faq-title">
+  <div class="container container-narrow">
+    <p class="eyebrow">Preguntas frecuentes</p>
+    <h2 id="faq-title" class="section-title">{heading}</h2>
+    <div class="faq">
+      {faqs.map((f) => (
+        <details>
+          <summary>{f.q}<Icon name="chevron" class="icon icon-sm" /></summary>
+          <p>{f.a}</p>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

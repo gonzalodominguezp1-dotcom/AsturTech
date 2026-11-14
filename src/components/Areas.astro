@@ -1,0 +1,22 @@
+---
+import Icon from './Icon.astro';
+import { locations } from '../data/locations';
+---
+<section class="section section-alt" aria-labelledby="areas-title">
+  <div class="container areas">
+    <div>
+      <p class="eyebrow">Dónde trabajamos</p>
+      <h2 id="areas-title" class="section-title">Informáticos en Villaviciosa, Gijón y toda Asturias</h2>
+      <p class="muted">Atención presencial en Villaviciosa, Gijón y concejos cercanos como Colunga, Cabranes, Sariego, Nava o Siero. Asistencia remota en cualquier punto de Asturias.</p>
+    </div>
+    <div class="area-cards">
+      {Object.values(locations).map((l) => (
+        <a class="area-card" href={l.path}>
+          <Icon name="map-pin" />
+          <span><strong>{l.h1}</strong><small>{l.zones.slice(0, 4).join(', ')}…</small></span>
+          <Icon name="arrow" class="icon icon-sm" />
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

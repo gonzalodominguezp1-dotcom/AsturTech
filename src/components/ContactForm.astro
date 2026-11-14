@@ -1,0 +1,141 @@
+---
+import Icon from './Icon.astro';
+import { services } from '../data/services';
+import { site, telLink } from '../config/site';
+import { SUPABASE_URL, SUPABASE_KEY } from '../lib/supabase';
+---
+<form class="form" id="contact-form" novalidate data-endpoint={SUPABASE_URL} data-key={SUPABASE_KEY}>
+  <div class="hp" aria-hidden="true">
+    <label>No rellenar <input type="text" name="website" tabindex="-1" autocomplete="off" /></label>
+  </div>
+
+  <div class="form-row">
+    <div class="field">
+      <label for="f-name">Nombre *</label>
+      <input id="f-name" name="name" type="text" autocomplete="name" required minlength="2" maxlength="120" />
+    </div>
+    <div class="field">
+      <label for="f-phone">Teléfono</label>
+      <input id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" maxlength="30" />
+    </div>
+  </div>
+
+  <div class="field">
+    <label for="f-email">Email</label>
+    <input id="f-email" name="email" type="email" autocomplete="email" maxlength="160" />
+  </div>
+
+  <div class="form-row">
+    <div class="field">
+      <label for="f-service">¿Qué necesitas?</label>
+      <select id="f-service" name="service">
+        {Object.entries(services).map(([key, s]) => <option value={key}>{s.card_title}</option>)}
+        <option value="otro">Otra cosa</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="f-location">¿Dónde?</label>
+      <select id="f-location" name="location">
+        <option>Villaviciosa</option>
+        <option>Gijón</option>
+        <option>Otro concejo de Asturias</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="field">
+    <label for="f-message">Cuéntanos qué pasa *</label>
+    <textarea id="f-message" name="message" rows="5" required minlength="10" maxlength="5000"></textarea>
+  </div>
+
+  <div class="field check">
+    <label><input type="checkbox" name="consent" value="1" required /> He leído y acepto la <a href="/privacidad" target="_blank">política de privacidad</a>. *</label>
+  </div>
+
+  <div class="alert alert-error" role="alert" hidden data-error></div>
+
+  <button class="btn btn-primary btn-lg btn-block" type="submit">Enviar mensaje <Icon name="arrow" class="icon icon-sm" /></button>
+  <p class="form-note">Te respondemos lo antes posible. Tus datos solo se usan para contestarte.</p>
+</form>
+
+<div class="alert alert-ok" role="status" hidden id="contact-ok">
+  <Icon name="check" />
+  <div><strong>¡Mensaje recibido!</strong> Te contestamos lo antes posible para darte cita. Si es urgente, llámanos o escríbenos por WhatsApp al <a href={telLink}>{site.phoneDisplay}</a>.</div>
+</div>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement | null;
+  const ok = document.getElementById('contact-ok');
+  const startedAt = Date.now();
+
+  const FALLBACK = 'No hemos podido enviar el mensaje. Por favor, llámanos o escríbenos por WhatsApp.';
+
+  function showError(msg: string) {
+    const box = form!.querySelector<HTMLElement>('[data-error]')!;
+    box.textContent = msg;
+    box.hidden = false;
+  }
+
+  form?.addEventListener('submit', async (ev) => {
+    ev.preventDefault();
+    const data = new FormData(form);
+    const get = (k: string) => String(data.get(k) ?? '').trim();
+
+    form.querySelectorAll('.has-error').forEach((el) => el.classList.remove('has-error'));
+    const invalid = (name: string) => form.querySelector(`[name="${name}"]`)?.closest('.field')?.classList.add('has-error');
+
+    // Antispam: campo trampa relleno o envío en menos de 3 segundos → se ignora en silencio.
+    if (get('website') || Date.now() - startedAt < 3000) {
+      form.hidden = true;
+      ok!.hidden = false;
+      return;
+    }
+
+    const email = get('email');
+    const phone = get('phone');
+    let valid = true;
+    if (get('name').length < 2) { invalid('name'); valid = false; }
+    if (get('message').length < 10) { invalid('message'); valid = false; }
+    if (!email && !phone) { invalid('phone'); invalid('email'); valid = false; }
+    if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { invalid('email'); valid = false; }
+    if (!data.get('consent')) { invalid('consent'); valid = false; }
+    if (!valid) {
+      showError('Revisa los campos marcados. Necesitamos tu nombre, un teléfono o email y una breve descripción.');
+      return;
+    }
+
+    const endpoint = form.dataset.endpoint;
+    const key = form.dataset.key;
+    if (!endpoint || !key) {
+      showError(FALLBACK);
+      return;
+    }
+
+    const button = form.querySelector('button')!;
+    button.disabled = true;
+    try {
+      const res = await fetch(`${endpoint}/rest/v1/leads`, {
+        method: 'POST',
+        headers: { apikey: key, 'Content-Type': 'application/json', Prefer: 'return=minimal' },
+        body: JSON.stringify({
+          name: get('name'),
+          phone: phone || null,
+          email: email || null,
+          service: get('service'),
+          location: get('location'),
+          message: get('message'),
+          consent: true,
+          source_page: location.pathname,
+        }),
+      });
+      if (!res.ok) throw new Error(String(res.status));
+      form.hidden = true;
+      ok!.hidden = false;
+      ok!.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    } catch (err) {
+      console.error('[contacto]', err);
+      showError(FALLBACK);
+      button.disabled = false;
+    }
+  });
+</script>

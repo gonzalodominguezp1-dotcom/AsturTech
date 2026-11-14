@@ -1,0 +1,27 @@
+---
+import Icon from './Icon.astro';
+import Breadcrumbs from './Breadcrumbs.astro';
+import type { IconName } from '../lib/icons';
+import type { Crumb } from '../lib/schema';
+
+interface Props {
+  icon: IconName;
+  title: string;
+  lead: string;
+  crumbs: Crumb[];
+}
+const { icon, title, lead, crumbs } = Astro.props;
+---
+<section class="page-hero">
+  <div class="container">
+    <Breadcrumbs crumbs={crumbs} />
+    <div class="page-hero-inner">
+      <span class="page-hero-icon"><Icon name={icon} /></span>
+      <div>
+        <h1>{title}</h1>
+        <p class="hero-lead">{lead}</p>
+        <div class="hero-actions"><slot /></div>
+      </div>
+    </div>
+  </div>
+</section>
