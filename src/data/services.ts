@@ -10,7 +10,7 @@ export interface Faq { q: string; a: string }
 export interface Service {
   path: string; icon: IconName; nav: string; card_title: string; card_text: string;
   title: string; description: string; h1: string; lead: string; intro: string[];
-  features: Feature[]; prices: Price[]; faqs: Faq[];
+  features: Feature[]; prices: Price[]; priceNote: string; faqs: Faq[];
 }
 
 export const services: Record<string, Service> = {
@@ -60,6 +60,7 @@ export const services: Record<string, Service> = {
                 "text": "Te conectamos de forma segura a tu ordenador y lo arreglamos mientras lo ves en pantalla. Sin desplazamientos."
             }
         ],
+        "priceNote": "Precios finales con IVA incluido. Te damos presupuesto cerrado antes de empezar.",
         "prices": [
             {
                 "name": "Diagnóstico",
@@ -68,37 +69,37 @@ export const services: Record<string, Service> = {
             },
             {
                 "name": "Hora de trabajo a domicilio",
-                "price": "27 €/hora",
+                "price": "30 €/hora",
                 "note": "Más desplazamiento"
             },
             {
                 "name": "Asistencia remota",
-                "price": "25 €/hora",
-                "note": "Fracciones de 30 minutos (12,50 €)"
+                "price": "28 €/hora",
+                "note": "Fracciones de 30 minutos (14 €)"
             },
             {
                 "name": "Formateo e instalación de Windows",
-                "price": "40 €",
+                "price": "45 €",
                 "note": "Con copia de tus datos"
             },
             {
                 "name": "Cambio a disco SSD",
-                "price": "35 € + disco",
+                "price": "40 € + disco",
                 "note": "Clonamos tu sistema, sin perder nada"
             },
             {
                 "name": "Eliminación de virus",
-                "price": "35 €",
+                "price": "40 €",
                 "note": "Incluye revisión de seguridad"
             },
             {
                 "name": "Pasar datos a un equipo nuevo",
-                "price": "25 €",
+                "price": "30 €",
                 "note": "Documentos, fotos, correo y programas"
             },
             {
                 "name": "Recuperación de datos",
-                "price": "desde 55 €",
+                "price": "desde 60 €",
                 "note": "Discos y pendrives con fallos lógicos"
             },
             {
@@ -110,7 +111,7 @@ export const services: Record<string, Service> = {
         "faqs": [
             {
                 "q": "¿Cuánto cuesta reparar un ordenador?",
-                "a": "Depende de la avería. El diagnóstico cuesta 20 € y se descuenta si aceptas la reparación. Las reparaciones más habituales tienen precio fijo: formateo 40 €, eliminación de virus 35 € o cambio a SSD por 35 € más el disco. Siempre te damos el precio antes de empezar."
+                "a": "Depende de la avería. El diagnóstico cuesta 20 € y se descuenta si aceptas la reparación. Las reparaciones más habituales tienen precio fijo: formateo 45 €, eliminación de virus 40 € o cambio a SSD por 40 € más el disco. Siempre te damos el precio antes de empezar."
             },
             {
                 "q": "¿Vais a domicilio?",
@@ -176,6 +177,7 @@ export const services: Record<string, Service> = {
                 "text": "Paneles de gestión, presupuestadores, áreas de clientes e integraciones con tu software."
             }
         ],
+        "priceNote": "Precios sin IVA (+21 %). Te damos presupuesto cerrado tras una primera reunión gratuita.",
         "prices": [
             {
                 "name": "Web profesional (hasta 5 secciones)",
@@ -201,7 +203,7 @@ export const services: Record<string, Service> = {
         "faqs": [
             {
                 "q": "¿Cuánto cuesta una página web para un negocio en Asturias?",
-                "a": "Una web profesional de presentación parte de 550 € y una tienda online de 1.600 €. Te damos un presupuesto cerrado después de una primera reunión gratuita en la que vemos qué necesitas."
+                "a": "Una web profesional de presentación parte de 550 € + IVA y una tienda online de 1.600 € + IVA. Te damos un presupuesto cerrado después de una primera reunión gratuita en la que vemos qué necesitas."
             },
             {
                 "q": "¿Cuánto se tarda en tener la web lista?",
@@ -267,6 +269,7 @@ export const services: Record<string, Service> = {
                 "text": "Atención remota y visitas presenciales con prioridad para clientes con plan."
             }
         ],
+        "priceNote": "Precios sin IVA (+21 %). Te damos presupuesto cerrado antes de empezar.",
         "prices": [
             {
                 "name": "Plan Autónomo (1–2 equipos)",

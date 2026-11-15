@@ -131,7 +131,7 @@ const data: Record<string, Location> = {
             },
             {
                 "q": "¿Cuánto cuesta que venga un informático a casa en Gijón?",
-                "a": "El desplazamiento a Gijón cuesta 15 € y después se cobra el tiempo de trabajo (27 €/hora) o el precio cerrado de la reparación. Siempre te decimos el precio antes de empezar."
+                "a": "El desplazamiento a Gijón cuesta 15 € y después se cobra el tiempo de trabajo (30 €/hora, IVA incluido) o el precio cerrado de la reparación. Siempre te decimos el precio antes de empezar."
             },
             {
                 "q": "¿Hacéis páginas web para negocios de Gijón?",
