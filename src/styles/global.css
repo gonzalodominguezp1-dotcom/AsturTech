@@ -102,9 +102,12 @@ address { font-style: normal; }
 /* ---------- Cabecera ---------- */
 .site-header {
   position: sticky; top: 0; z-index: 50; height: var(--header-h);
-  background: rgb(11 26 51 / 92%); backdrop-filter: saturate(160%) blur(12px);
+  background: rgb(11 26 51 / 92%);
   border-bottom: 1px solid rgb(255 255 255 / 6%); transition: box-shadow .2s;
 }
+/* El desenfoque va en un pseudo-elemento: si estuviera en .site-header,
+   el menú móvil (position: fixed) quedaría recortado a la altura de la cabecera. */
+.site-header::before { content: ''; position: absolute; inset: 0; z-index: -1; backdrop-filter: saturate(160%) blur(12px); -webkit-backdrop-filter: saturate(160%) blur(12px); }
 .site-header.is-scrolled { box-shadow: 0 6px 20px -10px rgb(0 0 0 / 50%); }
 .header-inner { display: flex; align-items: center; justify-content: space-between; height: 100%; gap: 1rem; }
 .brand { display: inline-flex; align-items: center; gap: .6rem; color: #fff; font-weight: 800; font-size: 1.3rem; letter-spacing: -0.02em; text-decoration: none; }
@@ -118,7 +121,7 @@ address { font-style: normal; }
   font: inherit; font-size: .975rem; font-weight: 600; color: #cbd5e1; text-decoration: none; cursor: pointer;
 }
 .main-nav a:hover, .main-nav button:hover, .main-nav a[aria-current='page'] { color: #fff; background: rgb(255 255 255 / 8%); }
-.main-nav .nav-cta { color: #fff; padding: .55rem 1rem; }
+.main-nav .nav-cta, .main-nav .nav-cta:hover { color: #fff; padding: .55rem 1rem; background: linear-gradient(135deg, var(--blue-600), var(--teal-500)); }
 
 .has-sub { position: relative; }
 .has-sub .sub {
@@ -136,7 +139,9 @@ address { font-style: normal; }
 @media (max-width: 960px) {
   .nav-toggle { display: inline-flex; }
   .main-nav {
-    position: fixed; inset: var(--header-h) 0 0 0; z-index: 49;
+    position: fixed; top: var(--header-h); left: 0; right: 0; z-index: 49;
+    height: calc(100vh - var(--header-h)); height: calc(100dvh - var(--header-h));
+    overscroll-behavior: contain;
     flex-direction: column; align-items: stretch; gap: 1rem; padding: 1.25rem 20px 2rem;
     background: var(--navy-900); overflow-y: auto;
     opacity: 0; visibility: hidden; transform: translateY(-8px); transition: .2s ease;
