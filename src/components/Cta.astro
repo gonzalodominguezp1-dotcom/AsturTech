@@ -1,5 +1,6 @@
 ---
 import Icon from './Icon.astro';
+import TechBackground from './TechBackground.astro';
 import { site, telLink, whatsappLink } from '../config/site';
 
 interface Props {
@@ -12,6 +13,7 @@ const {
 } = Astro.props;
 ---
 <section class="cta-band">
+  <TechBackground />
   <div class="container cta-inner">
     <div>
       <h2>{heading}</h2>

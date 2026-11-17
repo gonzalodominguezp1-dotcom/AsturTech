@@ -7,6 +7,7 @@ import Areas from '../components/Areas.astro';
 import Testimonials from '../components/Testimonials.astro';
 import Faq from '../components/Faq.astro';
 import Cta from '../components/Cta.astro';
+import TechBackground from '../components/TechBackground.astro';
 import { site, telLink } from '../config/site';
 import { services } from '../data/services';
 import { faqPage, website } from '../lib/schema';
@@ -24,10 +25,11 @@ const faqs = [
   schema={[faqPage(faqs), website()]}
 >
   <section class="hero">
+    <TechBackground />
     <div class="container hero-grid">
       <div class="hero-copy">
         <p class="pill"><Icon name="map-pin" class="icon icon-sm" /> Villaviciosa · Gijón · Asturias</p>
-        <h1>Informático en Villaviciosa y Gijón</h1>
+        <h1>Informático en <span class="grad">Villaviciosa y Gijón</span><span class="caret" aria-hidden="true"></span></h1>
         <p class="hero-lead">Servicio técnico informático, mantenimiento para empresas y desarrollo web para negocios en Asturias. Te lo solucionamos a domicilio o en remoto, con un precio claro antes de empezar.</p>
         <div class="hero-actions">
           <a class="btn btn-primary btn-lg" href={telLink}><Icon name="phone" class="icon icon-sm" /> Llamar ahora</a>
@@ -42,7 +44,8 @@ const faqs = [
 
       <div class="hero-visual" aria-hidden="true">
         <div class="panel">
-          <div class="panel-head"><span></span><span></span><span></span><em>Revisión del equipo</em></div>
+          <div class="panel-head"><span></span><span></span><span></span><em>asturtech ~ diagnóstico</em></div>
+          <p class="panel-cmd"><b>$</b> asturtech --revisar equipo</p>
           <ul class="panel-list">
             <li><span class="dot"></span>Virus y malware <b>Limpio</b></li>
             <li><span class="dot"></span>Disco SSD <b>Instalado</b></li>
@@ -68,6 +71,7 @@ const faqs = [
   </section>
 
   <section class="section section-dark" aria-labelledby="why-title">
+    <TechBackground />
     <div class="container">
       <p class="eyebrow">Por qué AsturTech</p>
       <h2 id="why-title" class="section-title">Un informático de confianza, de aquí</h2>

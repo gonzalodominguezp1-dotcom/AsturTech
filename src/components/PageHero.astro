@@ -1,6 +1,7 @@
 ---
 import Icon from './Icon.astro';
 import Breadcrumbs from './Breadcrumbs.astro';
+import TechBackground from './TechBackground.astro';
 import type { IconName } from '../lib/icons';
 import type { Crumb } from '../lib/schema';
 
@@ -13,6 +14,7 @@ interface Props {
 const { icon, title, lead, crumbs } = Astro.props;
 ---
 <section class="page-hero">
+  <TechBackground />
   <div class="container">
     <Breadcrumbs crumbs={crumbs} />
     <div class="page-hero-inner">

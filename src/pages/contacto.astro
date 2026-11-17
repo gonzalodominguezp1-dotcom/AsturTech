@@ -1,4 +1,5 @@
 ---
+import TechBackground from '../components/TechBackground.astro';
 import Base from '../layouts/Base.astro';
 import Icon from '../components/Icon.astro';
 import Breadcrumbs from '../components/Breadcrumbs.astro';
@@ -15,6 +16,7 @@ const mapUrl = `https://www.openstreetmap.org/?mlat=${site.lat}&mlon=${site.lng}
   crumbs={crumbs}
 >
   <section class="page-hero page-hero-sm">
+    <TechBackground />
     <div class="container">
       <Breadcrumbs crumbs={crumbs} />
       <h1>Contacta con tu informático en Asturias</h1>
