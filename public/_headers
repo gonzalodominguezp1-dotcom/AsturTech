@@ -1,2 +1,5 @@
 /img/marca/*
   Access-Control-Allow-Origin: *
+
+/maquetas/*
+  X-Robots-Tag: noindex, nofollow

@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Den Meulebaarg · Groepsaccommodatie in Zegge (West-Brabant)</title>
+<style>
+:root{--g:#1f5f3f;--g2:#2f7d52;--o:#f2994a;--ink:#14231b;--bg:#f6f8f4}
+*{box-sizing:border-box;margin:0}
+body{font-family:Inter,system-ui,sans-serif;color:var(--ink);background:var(--bg);line-height:1.6}
+h1,h2,h3{font-family:"Inter Display",Inter,sans-serif;letter-spacing:-.02em}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+.top{background:var(--g);color:#d9eadf;font-size:13px}.top .wrap{display:flex;justify-content:space-between;padding:8px 24px}
+header{background:#fff;position:sticky;top:0;z-index:5;box-shadow:0 1px 0 #e3e8e1}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:16px 24px}
+.logo{font-weight:800;font-size:22px;color:var(--g)}.logo span{color:var(--o)}
+.menu{display:flex;gap:26px;font-size:15px;font-weight:500;align-items:center}
+.btn{white-space:nowrap;display:inline-block;background:var(--o);color:#fff;padding:13px 22px;border-radius:12px;font-weight:700;font-size:15px}
+.btn.g{background:var(--g)}.btn.w{background:#fff;color:var(--g)}
+.hero{position:relative;color:#fff;background:url(img/meul-bos.jpg) center/cover;min-height:600px;display:flex;align-items:center}
+.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,40,25,.88),rgba(10,40,25,.45) 60%,rgba(10,40,25,.2))}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.2fr .9fr;gap:40px;align-items:center;width:100%}
+.pill{display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);padding:6px 12px;border-radius:999px;font-size:13px;margin-bottom:18px}
+.hero h1{font-size:58px;line-height:1.04;font-weight:800}
+.hero p{font-size:19px;margin:18px 0 26px;max-width:540px;opacity:.95}
+.quote{background:#fff;color:var(--ink);border-radius:18px;padding:26px;box-shadow:0 25px 60px rgba(0,0,0,.25)}
+.quote h3{font-size:20px;margin-bottom:14px}
+.quote .row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.quote label{font-size:12px;color:#5f6b63;font-weight:600;display:block;margin-bottom:5px}
+.quote .f{border:1px solid #d9e0d8;border-radius:10px;padding:11px 12px;font-size:14.5px}
+.quote .btn{width:100%;text-align:center;margin-top:6px}
+.quote small{display:block;text-align:center;color:#6c776f;margin-top:10px}
+.stats{background:#fff}.stats .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;padding:34px 24px}
+.stat b{display:block;font-size:30px;color:var(--g);font-family:"Inter Display"}.stat{font-size:14.5px;color:#4c5a51}
+section{padding:86px 0}
+.eyebrow{color:var(--o);font-weight:700;font-size:13px;letter-spacing:2px;text-transform:uppercase}
+h2{font-size:40px;line-height:1.12;margin:8px 0 16px;font-weight:800}
+.lead{font-size:18px;color:#3d4b42;max-width:720px}
+.groups{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:36px}
+.card{background:#fff;border-radius:16px;padding:24px;border:1px solid #e4e9e2}
+.card .i{font-size:26px;margin-bottom:10px}.card h3{font-size:19px;margin-bottom:6px}.card p{font-size:14.5px;color:#56645b}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.split img{width:100%;border-radius:18px;aspect-ratio:4/3;object-fit:cover;display:block}
+ul.check{list-style:none;padding:0;columns:2;gap:24px;margin-top:20px}
+ul.check li{padding-left:28px;position:relative;margin-bottom:10px;font-size:15.5px}
+ul.check li:before{content:"✓";position:absolute;left:0;top:0;color:#fff;background:var(--g2);width:19px;height:19px;border-radius:50%;font-size:12px;display:grid;place-items:center}
+.prices{background:var(--g);color:#fff}
+.ptab{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:32px}
+.ptab .card{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.18);color:#fff}
+.ptab .amt{font-size:34px;font-weight:800;font-family:"Inter Display"}.ptab p{color:#cfe3d6}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-top:18px;max-width:420px}
+.cal span{background:#fff;border-radius:8px;text-align:center;padding:8px 0;font-size:13px;border:1px solid #e1e7df}
+.cal .x{background:#fde3cf;border-color:#f6c39b;color:#9a4a12}
+.cta{background:linear-gradient(120deg,var(--o),#e0773a);color:#fff;border-radius:24px;padding:56px;display:flex;justify-content:space-between;align-items:center;gap:30px}
+.cta h2{margin:0}
+footer{background:#0f2a1c;color:#b9cdbf;padding:48px 0;font-size:14px;margin-top:86px}
+footer .wrap{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap}
+.badge{position:absolute;right:18px;top:96px;background:#111;color:#fff;font-size:12px;padding:8px 12px;border-radius:8px;opacity:.85;z-index:50}
+@media (max-width:820px){
+ .badge{display:none}
+ .top{display:none}.menu a:not(.btn){display:none}
+ .hero{min-height:auto;padding:56px 0}.hero .wrap{grid-template-columns:1fr}.hero h1{font-size:38px}
+ .stats .wrap{grid-template-columns:1fr 1fr}.groups,.ptab{grid-template-columns:1fr 1fr}
+ .split{grid-template-columns:1fr;gap:28px}ul.check{columns:1}
+ h2{font-size:30px}section{padding:60px 0}.cta{flex-direction:column;align-items:flex-start;padding:34px}
+}
+</style>
+</head>
+<body>
+<div class="top"><div class="wrap"><span>Molenstraat 19 · 4735 SM Zegge (N.Br.)</span><span>📞 0165 - 543 666 · info@meulebaarg.nl · NL | EN | DE</span></div></div>
+<header><div class="wrap nav">
+ <a class="logo" href="#">Den Meulebaarg<span>.</span></a>
+ <nav class="menu"><a href="#">Accommodatie</a><a href="#">Voor wie</a><a href="#">Faciliteiten</a><a href="#">Prijzen</a><a href="#">Omgeving</a><a class="btn" href="#">Offerte aanvragen</a></nav>
+</div></header>
+
+<div class="hero"><div class="wrap">
+ <div>
+  <span class="pill">⭐ Driesterren groepsaccommodatie · al 25+ jaar</span>
+  <h1>Plezier voor de hele groep, midden in het groen van West-Brabant</h1>
+  <p>Voor families, verenigingen, schoolkampen en bedrijfsuitjes. Met eigen voetbalveld, speelbos en catering als u dat wilt. U vraagt, wij draaien!</p>
+  <a class="btn" href="#">Bekijk beschikbaarheid</a> &nbsp; <a class="btn w" href="#">Fotogalerij</a>
+ </div>
+ <div class="quote">
+  <h3>Vraag direct een prijsopgave aan</h3>
+  <div class="row"><div><label>Aankomst</label><div class="f">vr 15 mei</div></div><div><label>Vertrek</label><div class="f">zo 17 mei</div></div></div>
+  <div class="row"><div><label>Aantal personen</label><div class="f">40</div></div><div><label>Type groep</label><div class="f">Vereniging ▾</div></div></div>
+  <div class="row" style="grid-template-columns:1fr"><div><label>Catering</label><div class="f">Volpension met barbecue ▾</div></div></div>
+  <a class="btn" href="#">Prijsopgave ontvangen</a>
+  <small>Binnen 24 uur antwoord van Cor &amp; Corrie</small>
+ </div>
+</div></div>
+
+<div class="stats"><div class="wrap">
+ <div class="stat"><b>25+ jaar</b>gastvrijheid</div>
+ <div class="stat"><b>2 gebouwen</b>apart of samen te huren</div>
+ <div class="stat"><b>Voetbalveld</b>volgens officiële normen</div>
+ <div class="stat"><b>Breda · Bergen op Zoom</b>steden en bossen dichtbij</div>
+</div></div>
+
+<section><div class="wrap">
+ <span class="eyebrow">Voor wie</span>
+ <h2>Eén adres voor elke groep</h2>
+ <p class="lead">Den Meulebaarg van Cor en Corrie van den Broek ligt landelijk tussen Bergen op Zoom en Breda: steden en bossen binnen handbereik.</p>
+ <div class="groups">
+  <div class="card"><div class="i">⚽</div><h3>Sportverenigingen</h3><p>Trainingskampen met het voetbalveld direct naast de deur.</p></div>
+  <div class="card"><div class="i">🎒</div><h3>Schoolkampen</h3><p>Ruimte om te spelen, veilig en overzichtelijk terrein.</p></div>
+  <div class="card"><div class="i">👨‍👩‍👧‍👦</div><h3>Families &amp; reünies</h3><p>Jubilea en familieweekenden, met catering of zelf koken.</p></div>
+  <div class="card"><div class="i">🏢</div><h3>Bedrijven</h3><p>Personeelsuitjes en teamdagen in het groen.</p></div>
+ </div>
+</div></section>
+
+<section style="background:#fff"><div class="wrap split">
+ <img src="img/meul-zaal.jpg" alt="Recreatiezaal van Den Meulebaarg">
+ <div>
+  <span class="eyebrow">Faciliteiten</span>
+  <h2>Alles geregeld, afgestemd op uw wensen</h2>
+  <p class="lead">In een van de recreatiezalen vindt u een muurschildering die de Westbrabantse kunstenaar Gerard Konings speciaal voor Den Meulebaarg maakte.</p>
+  <ul class="check">
+   <li>Parkeerterrein naast de accommodatie</li><li>Groot speelveld en speeltoestellen</li>
+   <li>Recreatieruimte met verrijdbare bar</li><li>Overdekt terras en barbecue</li>
+   <li>Maaltijden en catering mogelijk</li><li>Beddengoed te huur</li>
+  </ul>
+ </div>
+</div></section>
+
+<section class="prices"><div class="wrap">
+ <span class="eyebrow" style="color:#ffc38f">Prijsindicatie</span>
+ <h2>Duidelijke prijzen per persoon</h2>
+ <div class="ptab">
+  <div class="card"><h3>Weekend</h3><div class="amt">v.a. € 35</div><p>Vrijdag tot zondag, zelfverzorging</p></div>
+  <div class="card"><h3>Midweek</h3><div class="amt">v.a. € 46</div><p>Maandag tot vrijdag</p></div>
+  <div class="card"><h3>Week</h3><div class="amt">v.a. € 70</div><p>Vrijdag tot vrijdag</p></div>
+  <div class="card"><h3>Catering</h3><div class="amt">v.a. € 13</div><p>3-gangendiner, barbecue v.a. € 12,50</p></div>
+ </div>
+</div></section>
+
+<section><div class="wrap split">
+ <div>
+  <span class="eyebrow">Beschikbaarheid</span>
+  <h2>Zie direct of uw datum vrij is</h2>
+  <p class="lead">Geen gebel of gemail meer: de kalender is altijd actueel. Kies uw datum en vraag meteen een prijsopgave aan.</p>
+  <div class="cal"><span>ma</span><span>di</span><span>wo</span><span>do</span><span>vr</span><span>za</span><span>zo</span>
+   <span>4</span><span>5</span><span>6</span><span>7</span><span class="x">8</span><span class="x">9</span><span class="x">10</span>
+   <span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span>
+   <span class="x">18</span><span class="x">19</span><span class="x">20</span><span class="x">21</span><span class="x">22</span><span class="x">23</span><span class="x">24</span></div>
+ </div>
+ <img src="img/meul-bos.jpg" alt="Speelbos bij Den Meulebaarg">
+</div></section>
+
+<div class="wrap"><div class="cta">
+ <div><h2>Voorkom teleurstelling: boek tijdig</h2><p style="font-size:18px;opacity:.95">Vraag de folder met prijslijst aan of bel Cor &amp; Corrie: 0165 - 543 666</p></div>
+ <a class="btn w" href="#">Offerte aanvragen</a>
+</div></div>
+
+<footer><div class="wrap">
+ <div><b style="color:#fff;font-size:18px">Groepsaccommodatie Den Meulebaarg</b><br>Cor en Corrie van den Broek</div>
+ <div>Molenstraat 19<br>4735 SM Zegge (N.Br.)</div>
+ <div>0165 - 543 666<br>info@meulebaarg.nl</div>
+</div></footer>
+<div class="badge">Ontwerpvoorstel door AsturTech</div>
+</body>
+</html>

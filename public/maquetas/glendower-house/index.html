@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Glendower House · Bed &amp; Breakfast in New Ross, Co. Wexford (design preview)</title>
+<style>
+:root{--a:#2f5d50;--b:#c58b4c;--cream:#f8f5ef;--ink:#1d2320;--mute:#5b625d}
+*{box-sizing:border-box;margin:0}
+body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--ink);background:var(--cream);line-height:1.6}
+h1,h2,h3,.serif{font-family:Georgia,"Times New Roman",serif;font-weight:400}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.wrap{max-width:1160px;margin:0 auto;padding:0 22px}
+.preview{background:#111;color:#fff;font-size:13px;text-align:center;padding:8px 14px}
+.preview b{color:var(--b)}
+header{position:absolute;left:0;right:0;z-index:5;color:#fff}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:20px 22px;max-width:1160px;margin:0 auto}
+.logo{font-family:Georgia,serif;font-size:25px;line-height:1.1}.logo small{display:block;font-family:system-ui,sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;opacity:.85}
+.menu{display:flex;gap:26px;align-items:center;font-size:15px}
+.btn{display:inline-block;background:var(--b);color:#fff;padding:12px 22px;border-radius:999px;font-weight:600;font-size:15px;border:0;cursor:pointer;white-space:nowrap}
+.btn.ghost{background:transparent;border:1px solid rgba(255,255,255,.75)}
+.hero{position:relative;min-height:640px;display:flex;align-items:flex-end;color:#fff;background:#333 url(https://images.unsplash.com/photo-1759320192570-66c758e63cb8?auto=format&fit=crop&w=1600&q=70) center/cover}
+.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.55),rgba(0,0,0,.2) 45%,rgba(0,0,0,.75))}
+.hero .wrap{position:relative;padding-bottom:80px;width:100%}
+.tag{display:inline-block;background:rgba(255,255,255,.16);backdrop-filter:blur(4px);padding:6px 14px;border-radius:999px;font-size:13px;letter-spacing:1px;margin-bottom:18px}
+.hero h1{font-size:60px;line-height:1.06;max-width:760px}
+.hero p{font-size:19px;max-width:580px;margin:18px 0 28px;opacity:.95}
+.hero .cta{display:flex;gap:12px;flex-wrap:wrap}
+.book{position:relative;margin-top:-44px;z-index:4}
+.book form{background:#fff;border-radius:18px;box-shadow:0 20px 50px rgba(0,0,0,.14);display:grid;grid-template-columns:repeat(3,1fr) auto;gap:16px;padding:20px 24px;align-items:end}
+.book label{font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--mute);display:block;margin-bottom:6px}
+.f{width:100%;border:1px solid #ddd6c8;border-radius:10px;padding:12px 14px;font:inherit;font-size:15px;background:#fff}
+section{padding:90px 0}
+.eyebrow{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--b);font-weight:700}
+h2{font-size:40px;line-height:1.15;margin:10px 0 18px}
+.split{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center}
+.split img{width:100%;border-radius:20px;aspect-ratio:4/3;object-fit:cover}
+.split p{font-size:17.5px;color:#3d4440;margin-bottom:14px}
+.feat{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:44px}
+.card{background:#fff;border-radius:16px;padding:24px}
+.card .i{width:44px;height:44px;border-radius:12px;background:color-mix(in srgb,var(--a) 12%,#fff);display:grid;place-items:center;font-size:21px;margin-bottom:14px}
+.card h3{font-size:20px;margin-bottom:4px}.card p{font-size:14.5px;color:var(--mute)}
+.rooms{background:#fff}
+.rgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:34px}
+.room{background:var(--cream);border-radius:18px;overflow:hidden}
+.room img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.rb{padding:22px}.rb h3{font-size:22px}.rb p{color:var(--mute);font-size:15px;margin:4px 0 12px}
+.room.np{background:var(--a);color:#fff}.room.np p{color:rgba(255,255,255,.8)}
+.amt{font-family:Georgia,serif;font-size:38px;color:var(--b)}
+.link{font-weight:600;color:var(--a)}.room.np .link{color:var(--b)}
+.note{margin-top:22px;color:var(--mute);font-size:15px}
+.dark{background:var(--a);color:#fff}
+.dark .split p,.dark li{color:rgba(255,255,255,.88)}
+.near{list-style:none;padding:0;margin-top:10px}
+.near li{padding:12px 0;border-bottom:1px solid rgba(255,255,255,.18);font-size:16.5px}
+.reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:34px}
+.reviews .card p{font-size:16px;color:#3d4440;font-style:italic}
+.stars{color:var(--b);letter-spacing:2px;margin-bottom:10px}
+.contact{display:grid;grid-template-columns:1fr 1.2fr;gap:50px}
+.contact form{background:#fff;border-radius:18px;padding:26px;display:grid;gap:14px}
+.contact form .row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.info p{font-size:16.5px;margin:8px 0}
+footer{background:#151a17;color:#c9cfcb;padding:40px 0;font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+@media (max-width:860px){
+ .menu a:not(.btn){display:none}
+ .hero{min-height:600px}.hero h1{font-size:38px}.hero p{font-size:17px}
+ .book form{grid-template-columns:1fr 1fr}.book form .btn{grid-column:span 2}
+ section{padding:64px 0}h2{font-size:31px}
+ .split,.contact{grid-template-columns:1fr;gap:28px}
+ .feat{grid-template-columns:1fr 1fr}.rgrid,.reviews{grid-template-columns:1fr}
+ .contact form .row{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="preview">Design preview by <b>AsturTech</b> for Glendower House · example photos, to be replaced with your own</div>
+<header><div class="nav"><a class="logo" href="#">Glendower House<small>Bed &amp; Breakfast</small></a><nav class="menu"><a href="#about">About</a><a href="#rooms">Rooms</a><a href="#area">The area</a><a href="#contact">Contact</a><a class="btn" href="#book">Book direct</a></nav></div></header>
+
+<section class="hero" style="padding:0"><div class="wrap">
+ <span class="tag">📍 New Ross, Co. Wexford</span>
+ <h1>A warm, pet-friendly welcome in New Ross</h1>
+ <p>Garden-view rooms, a hearty breakfast and secure parking, just a gentle 10-minute stroll from the Dunbrody Famine Ship and the centre of town.</p>
+ <div class="cta"><a class="btn" href="#book">Check availability</a><a class="btn ghost" href="#rooms">See the rooms</a></div>
+</div></section>
+
+<div class="book wrap" id="book"><form onsubmit="event.preventDefault();this.querySelector('button').textContent='✓ Request sent (demo)'">
+ <div><label>Arrival</label><input class="f" type="date"></div>
+ <div><label>Departure</label><input class="f" type="date"></div>
+ <div><label>Guests</label><select class="f"><option>2 adults</option><option>1 adult</option><option>2 adults + children</option><option>Group</option></select></div>
+ <button class="btn">Request to book</button>
+</form></div>
+
+<section id="about"><div class="wrap">
+ <div class="split">
+  <div><span class="eyebrow">Welcome</span><h2>Your home in the heart of the Norman Way</h2><p>Glendower House is a family-run bed and breakfast on the Wexford Road at Portersland, on the edge of New Ross. Every room looks out over our large mature gardens.</p><p>Leave the car in our secure off-street car park and walk into town for the Dunbrody Ship, the Ros Tapestry and plenty of shops, restaurants and pubs. Families and four-legged friends are always welcome.</p></div>
+  <img src="https://images.unsplash.com/photo-1641232458416-feace752b346?auto=format&fit=crop&w=1200&q=70" alt="" loading="lazy">
+ </div>
+ <div class="feat"><div class="card"><div class="i">🐾</div><h3>Pet &amp; family friendly</h3><p>Bring the whole family, dogs included.</p></div><div class="card"><div class="i">🌳</div><h3>Garden views</h3><p>Every room overlooks our mature gardens.</p></div><div class="card"><div class="i">🅿️</div><h3>Secure parking</h3><p>Off-street car park, free for guests.</p></div><div class="card"><div class="i">📶</div><h3>Free WiFi</h3><p>Fast WiFi, flat-screen TV, tea &amp; coffee.</p></div></div>
+</div></section>
+
+<section class="rooms" id="rooms"><div class="wrap">
+ <span class="eyebrow">Stay with us</span><h2>Rooms &amp; rates</h2>
+ <div class="rgrid"><div class="room"><img src="https://images.unsplash.com/photo-1635108197416-1dc231c885d7?auto=format&fit=crop&w=900&q=70" alt="" loading="lazy"><div class="rb"><h3>Double room</h3><p>Garden view · private bathroom with bath</p><a href="#book" class="link">Check availability →</a></div></div><div class="room"><img src="https://images.unsplash.com/photo-1517862774645-dd398fbfaffa?auto=format&fit=crop&w=900&q=70" alt="" loading="lazy"><div class="rb"><h3>Family room</h3><p>Space for the kids · garden view</p><a href="#book" class="link">Check availability →</a></div></div><div class="room"><img src="https://images.unsplash.com/photo-1607701777602-2ed12f239fdc?auto=format&fit=crop&w=900&q=70" alt="" loading="lazy"><div class="rb"><h3>Twin room</h3><p>Two comfortable beds · free toiletries</p><a href="#book" class="link">Check availability →</a></div></div></div>
+ <p class="note">Rates on request: send us your dates and we&#x27;ll reply the same day. Booking direct means the best price and no booking-site fees.</p>
+</div></section>
+
+<section class="dark" id="area"><div class="wrap"><div class="split">
+ <img src="https://images.unsplash.com/photo-1722611053174-c8f4a9c9f2ea?auto=format&fit=crop&w=1200&q=70" alt="" loading="lazy">
+ <div><span class="eyebrow">Explore</span><h2>Things to do nearby</h2><ul class="near"><li>Dunbrody Famine Ship · 10 min walk</li><li>Ros Tapestry · town centre</li><li>JFK Homestead · 15 min drive</li><li>Hook Lighthouse · 35 min drive</li><li>Waterford city · 25 min drive</li></ul></div>
+</div></div></section>
+
+<section><div class="wrap">
+ <span class="eyebrow">Guest reviews</span><h2>What our guests say</h2>
+ <div class="reviews">
+  <div class="card"><div class="stars">★★★★★</div><p>Your best Google and Tripadvisor reviews would appear here automatically.</p></div>
+  <div class="card"><div class="stars">★★★★★</div><p>Real guest quotes build trust and help new visitors decide to book direct.</p></div>
+  <div class="card"><div class="stars">★★★★★</div><p>Plus your Fáilte Ireland approval and any awards, displayed proudly.</p></div>
+ </div>
+</div></section>
+
+<section class="rooms" id="contact"><div class="wrap contact">
+ <div class="info"><span class="eyebrow">Contact</span><h2>Get in touch</h2>
+  <p>📍 Glendower House, Wexford Road, Portersland, New Ross, Co. Wexford</p><p>📞 051 421 989</p><p>✉️ glendowerhouse@eircom.net</p>
+  <p style="color:var(--mute);margin-top:18px">We usually reply within a few hours.</p></div>
+ <form onsubmit="event.preventDefault();this.querySelector('button').textContent='✓ Message sent (demo)'">
+  <div class="row"><input class="f" placeholder="Your name"><input class="f" placeholder="Email"></div>
+  <div class="row"><input class="f" type="date"><input class="f" type="date"></div>
+  <textarea class="f" rows="4" placeholder="Your message"></textarea>
+  <button class="btn">Send message</button>
+ </form>
+</div></section>
+
+<footer><div class="wrap"><span>© 2027 Glendower House · New Ross, Co. Wexford</span><span>Website by AsturTech · asturtechinformatica.es</span></div></footer>
+</body>
+</html>
